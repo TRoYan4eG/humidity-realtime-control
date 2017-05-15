@@ -10,4 +10,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function jsonResponse($data, $status = 200, $headers = [], $options = JSON_NUMERIC_CHECK) {
+        return response()->json($data, $status, $headers, $options);
+    }
 }

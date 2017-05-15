@@ -27,3 +27,7 @@ Route::get('auth/logout', 'Auth\LoginController@logout');
 // Маршруты регистрации...
 Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('auth/register', 'Auth\RegisterController@register');
+//Companies
+Route::get('/companies', 'CompaniesController@index');
+Route::get('/companies/{id}', 'CompaniesController@show');
+
