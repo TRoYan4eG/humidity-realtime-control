@@ -17,7 +17,7 @@ class CreateSensorsTable extends Migration
             $table->increments('id');
             $table->decimal('lat', 12,8)->nullable();
             $table->decimal('lng', 12,8)->nullable();
-            $table->text('straw_id');
+            $table->integer('straw_id');
             $table->timestamps();
         });
     }

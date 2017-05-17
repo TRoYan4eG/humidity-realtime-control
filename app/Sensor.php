@@ -16,7 +16,7 @@ class Sensor extends Authenticatable
         'lat', 'lng', 'straw_id',
     ];
 
-    public function owner(){
-        $this->hasOne('App\Straw', 'straw_id');
+    public function straw(){
+        return $this->belongsTo('App\Straw');
     }
 }

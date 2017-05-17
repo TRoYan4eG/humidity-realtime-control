@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -16,7 +17,7 @@ class Straw extends Authenticatable
         'type', 'lat', 'lng', 'company_id',
     ];
 
-    public function owner(){
-        $this->hasOne('App\Company', 'company_id');
+    public function company(){
+       return $this->belongsTo('App\Company');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -16,7 +17,10 @@ class Company extends Authenticatable
         'name', 'address', 'owner_id',
     ];
 
-    public function owner(){
-        $this->hasOne('App\User', 'owner_id');
+    public $table = 'companies';
+
+    public function owner()
+    {
+        return $this->hasOne('App\User', 'owner_id');
     }
 }

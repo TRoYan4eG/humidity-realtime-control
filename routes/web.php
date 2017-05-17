@@ -30,4 +30,13 @@ Route::post('auth/register', 'Auth\RegisterController@register');
 //Companies
 Route::get('/companies', 'CompaniesController@index');
 Route::get('/companies/{id}', 'CompaniesController@show');
+//Straws
+Route::get('/straws', 'StrawsController@index');
+Route::get('/straws/{id}', 'StrawsController@show');
+//Sensors
+Route::get('/sensors', 'SensorsController@index');
+Route::get('/sensors/{id}', 'SensorsController@show');
+//Measurements
+Route::get('/measurements', 'MeasurementsController@index');
+Route::get('/measurements/{id}', 'MeasurementsController@show');
 
