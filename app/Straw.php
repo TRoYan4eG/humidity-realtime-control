@@ -20,4 +20,8 @@ class Straw extends Authenticatable
     public function company(){
        return $this->belongsTo('App\Company');
     }
+
+    public function sensors(){
+        return $this->hasMany('App\Sensor', 'straw_id')->with('measurements');
+    }
 }

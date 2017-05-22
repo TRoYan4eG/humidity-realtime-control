@@ -23,4 +23,8 @@ class Company extends Authenticatable
     {
         return $this->hasOne('App\User', 'owner_id');
     }
+    public function straws()
+    {
+        return $this->hasMany('App\Straw', 'company_id');
+    }
 }

@@ -19,4 +19,8 @@ class Sensor extends Authenticatable
     public function straw(){
         return $this->belongsTo('App\Straw');
     }
+
+    public function measurements(){
+        return $this->hasMany('App\Measurement', 'sensor_id');
+    }
 }

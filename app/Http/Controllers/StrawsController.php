@@ -42,4 +42,15 @@ class StrawsController extends Controller
         }
         return $this->jsonResponse($straw, 200);
     }
+
+    public function companyStraws($id){
+        $user = \Auth::user();
+        if (!$user){
+            return $this->jsonResponse(['error' => 'You are not authorized!'], 400);
+        }
+        $straws = Straw::with(['company' => function($query) {
+            $query->where('owner_id', \Auth::user()->id);
+        }])->where('company_id', $id)->get();
+        return view('site.straw.index', ['straws' => $straws]);
+    }
 }

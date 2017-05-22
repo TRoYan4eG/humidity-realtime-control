@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 // Маршруты аутентификации...
 Route::get('auth/login', 'Auth\LoginController@showLoginForm');
@@ -32,9 +28,11 @@ Route::get('/companies', 'CompaniesController@index');
 Route::get('/companies/{id}', 'CompaniesController@show');
 //Straws
 Route::get('/straws', 'StrawsController@index');
+Route::get('/straws/company/{id}', 'StrawsController@companyStraws');
 Route::get('/straws/{id}', 'StrawsController@show');
 //Sensors
 Route::get('/sensors', 'SensorsController@index');
+Route::get('/sensors/straw/{id}', 'SensorsController@getSensorsData');
 Route::get('/sensors/{id}', 'SensorsController@show');
 //Measurements
 Route::get('/measurements', 'MeasurementsController@index');

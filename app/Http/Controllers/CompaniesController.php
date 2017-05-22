@@ -23,7 +23,8 @@ class CompaniesController extends Controller
         if(!$companies){
             return $this->jsonResponse(['error' => 'You have no companies'], 404);
         }
-        return $this->jsonResponse($companies,200);
+        return view('site.company.index', ['companies' => $companies]);
+        //return $this->jsonResponse($companies,200);
     }
 
     public function show($id){

@@ -57,4 +57,21 @@ class SensorsController extends Controller
         }
         return $this->jsonResponse(['error' => 'You have no permissions'], 403);
     }
+
+    public function getSensorsData($id){
+        $user = \Auth::user();
+        if (!$user){
+            return $this->jsonResponse(['error' => 'You are not authorized!'], 400);
+        }
+        $straws = Straw::with(['company' => function($query) {
+            $query->where('owner_id', \Auth::user()->id);
+        }])->with('sensors')->find($id);
+        $sensors = $straws->sensors;
+        if(!$sensors){
+            return;
+        }
+        $count_sensors = count($sensors);
+        $count_measurement = count($sensors[$count_sensors-1]->measurements);
+        return $this->jsonResponse(['data' => [$sensors, $count_sensors, $count_measurement]], 200);
+    }
 }

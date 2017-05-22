@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="Chart.js"></script>
 </head>
 <body>
     <div id="app">
