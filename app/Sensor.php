@@ -16,11 +16,13 @@ class Sensor extends Authenticatable
         'lat', 'lng', 'straw_id',
     ];
 
+    public $table = 'sensors';
+
     public function straw(){
         return $this->belongsTo('App\Straw');
     }
 
     public function measurements(){
-        return $this->hasMany('App\Measurement', 'sensor_id');
+        return $this->hasMany('App\Measurement', 'sensor_id')->limit(20);
     }
 }

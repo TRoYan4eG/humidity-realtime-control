@@ -20,22 +20,7 @@ class CompaniesController extends Controller
             return $this->jsonResponse(['error' => 'You are not authorized!'], 400);
         }
         $companies = Company::where('owner_id', $user->id)->get();
-        if(!$companies){
-            return $this->jsonResponse(['error' => 'You have no companies'], 404);
-        }
         return view('site.company.index', ['companies' => $companies]);
-        //return $this->jsonResponse($companies,200);
     }
 
-    public function show($id){
-        $user = \Auth::user();
-        if (!$user){
-            return $this->jsonResponse(['error' => 'You are not authorized!'], 400);
-        }
-        $company = Company::where('owner_id', $user->id)->find($id);
-        if(!$company){
-            return $this->jsonResponse(['error' => 'You have no permissions'], 403);
-        }
-        return $this->jsonResponse($company, 200);
-    }
 }

@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Welcome, {{Auth::user()->name}}</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    You are logged in! <a href="/companies"> Go to your companies...</a>
                 </div>
             </div>
         </div>

@@ -16,6 +16,8 @@ class Measurement extends Authenticatable
         'temperature', 'humidity', 'sensor_id',
     ];
 
+    public $table = 'measurements';
+
     public function sensor(){
         $this->hasOne('App\Sensor', 'sensor_id');
     }

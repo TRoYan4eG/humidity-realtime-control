@@ -17,11 +17,13 @@ class Straw extends Authenticatable
         'type', 'lat', 'lng', 'company_id',
     ];
 
+    public $table = 'straws';
+
     public function company(){
        return $this->belongsTo('App\Company');
     }
 
     public function sensors(){
-        return $this->hasMany('App\Sensor', 'straw_id')->with('measurements');
+        return $this->hasOne('App\Sensor', 'straw_id')->with('measurements');
     }
 }

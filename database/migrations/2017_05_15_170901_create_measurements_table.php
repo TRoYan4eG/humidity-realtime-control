@@ -15,8 +15,8 @@ class CreateMeasurementsTable extends Migration
     {
         Schema::create('measurements', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('temperature', 5, 2);
-            $table->float('humidity', 5, 2);
+            $table->decimal('temperature', 5, 2);
+            $table->decimal('humidity', 5, 2);
             $table->integer('sensor_id');
             $table->timestamps();
         });
