@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
-use App\Sensor;
 use App\Straw;
-use Illuminate\Http\Request;
 
 class SensorsController extends Controller
 {

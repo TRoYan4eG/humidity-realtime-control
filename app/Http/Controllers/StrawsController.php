@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
 use App\Straw;
-use Illuminate\Http\Request;
 
 class StrawsController extends Controller
 {

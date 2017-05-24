@@ -9,7 +9,7 @@
                     <div class="panel-body">
                         <h4>Temperature:</h4>
                         <canvas id="temperature" width="600" height="400"></canvas>
-                        <h4>Temperature:</h4>
+                        <h4>Humidity:</h4>
                         <canvas id="humidity" width="600" height="400"></canvas>
                     </div>
                 </div>
