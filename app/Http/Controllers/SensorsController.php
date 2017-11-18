@@ -19,9 +19,11 @@ class SensorsController extends Controller
         }
         $straws = Straw::with(['company' => function($query) {
             $query->where('owner_id', \Auth::user()->id);
-        }])->with('sensors')->find($id);
-        $sensors = $straws->sensors;
-        return $this->jsonResponse(['success' => true, 'sensors' => $sensors], 200);
+        }])->with(['sensors' => function($query2){
+            $query2->with('measurements');
+        }])->find($id);
+        $sensors = $straws->sensors->all();
+        return $this->jsonResponse(['success' => true, 'sensors' => $sensors[0]], 200);
     }
 
     public function getSensorsData(){

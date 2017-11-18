@@ -24,6 +24,12 @@ class Straw extends Authenticatable
     }
 
     public function sensors(){
-        return $this->hasOne('App\Sensor', 'straw_id')->with('measurements');
+        return $this->hasMany('App\Sensor');
+    }
+
+    public function getSensorsReadings(){
+        foreach ($this->sensors as $sensor){
+            $sensor->getMeasurements();
+        }
     }
 }

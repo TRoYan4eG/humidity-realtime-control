@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Sensor;
+use App\Straw;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

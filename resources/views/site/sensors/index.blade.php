@@ -21,7 +21,16 @@
             const ctx = document.getElementById(data.elementName);
             const mainChart = new Chart(ctx, {
                 type: 'line',
-                data: data
+                data: data,
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
             });
         }
         arr = location.href.split('/')
