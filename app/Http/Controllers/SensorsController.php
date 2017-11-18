@@ -23,7 +23,7 @@ class SensorsController extends Controller
             $query2->with('measurements');
         }])->find($id);
         $sensors = $straws->sensors->all();
-        return $this->jsonResponse(['success' => true, 'sensors' => $sensors[0]], 200);
+        return $this->jsonResponse(['success' => true, 'sensors' => $sensors], 200);
     }
 
     public function getSensorsData(){

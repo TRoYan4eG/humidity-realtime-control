@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
+                <div class="panel panel-default" id="charts">
                     <div class="panel-heading">Measurements</div>
                     <div class="panel-body">
                         <h4>Temperature:</h4>
@@ -26,7 +26,7 @@
                     scales: {
                         yAxes: [{
                             ticks: {
-                                beginAtZero:true
+                                beginAtZero: true
                             }
                         }]
                     }
@@ -34,22 +34,21 @@
             });
         }
         arr = location.href.split('/')
-        sensorId = arr[arr.length-1]
+        sensorId = arr[arr.length - 1]
         getData = () => {
             $.get(`/sensors/${sensorId}`, (response) => {
                 if (response.success) {
-                    let temperature = []
-                    let humidity = []
+                    let dataSet1 = []
+                    let dataSet2 = []
                     let dates = []
-                    response.sensors.measurements.map(measurement => {
-                        temperature.push(measurement.temperature)
-                        humidity.push(measurement.humidity)
-                        dates.push(measurement.created_at)
-                    })
-                    const data = {
-                        labels: dates,
-                        datasets: [
-                            {
+                    response.sensors.map(sensor => {
+                        let temperature = []
+                        let humidity = []
+                        sensor.measurements.map(measurement => {
+                            temperature.push(measurement.temperature)
+                            humidity.push(measurement.humidity)
+                        })
+                            dataSet1.push({
                                 label: "Temperature",
                                 fill: true,
                                 lineTension: 0.1,
@@ -70,14 +69,8 @@
                                 pointHitRadius: 10,
                                 data: temperature,
                                 spanGaps: false,
-                            }
-                        ],
-                        elementName: "temperature"
-                    };
-                    const data2 = {
-                        labels: dates,
-                        datasets: [
-                            {
+                            })
+                            dataSet2.push({
                                 label: "Humidity",
                                 fill: true,
                                 lineTension: 0.1,
@@ -98,8 +91,20 @@
                                 pointHitRadius: 10,
                                 data: humidity,
                                 spanGaps: false,
-                            }
-                        ],
+                            })
+                    })
+                    console.log(dataSet1)
+                    response.sensors[0].measurements.map(measurement => {
+                        dates.push(measurement.created_at)
+                    })
+                    const data = {
+                        labels: dates,
+                        datasets: dataSet1,
+                        elementName: "temperature"
+                    };
+                    const data2 = {
+                        labels: dates,
+                        datasets: dataSet2,
                         elementName: "humidity"
                     };
                     buildChart(data)
