@@ -11,10 +11,20 @@
                         <h4>Choose straw:</h4>
                         @if(count($straws) > 0)
                             @foreach($straws as $straw)
-                                <input style="margin-bottom: 5px" type="button" class="straw-button" id="{{$straw->id}}" value="{{$straw->id}}"></br>
+                                <div class="card">
+                                    <div class="card-header">
+                                        У Васька на поле
+                                    </div>
+                                    <div class="card-body">
+                                        <img class="pull-right img-rounded" style="margin-right: 10px" width="150px" height="150px"
+                                             src="{{asset('images/test2.jpg')}}" alt="Card image cap">
+                                        <p class="card-text">Разстелили лён у васька на поле 19ю11ю2017d  dskffdfk skldfksdk fksdk  kfksd ksfdkkfksldk fksd kfk ksdkfskd ksdkf ldsl kdkf kdskl kfsdk klfdkls f</p>
+                                        <a href="/sensors/straw/{{$straw->id}}" class="btn btn-primary">Go to straw</a>
+                                    </div>
+                                </div>
                             @endforeach
                         @else
-                        You have no straws!
+                            You have no straws!
                         @endif
                     </div>
                 </div>
